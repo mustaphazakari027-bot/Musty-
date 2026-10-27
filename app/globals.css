@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --mint: #ddf5e9;
+  --emerald: #18a978;
+  --forest: #064e3b;
+  --ink: #101a17;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f4fcf8;
+  color: var(--ink);
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'ss01';
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #18a978;
+  color: #fff;
+}
+
+/* Focus visibility for keyboard users */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid #18a978;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-[-0.02em] text-ink;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .shell {
+    @apply mx-auto w-full max-w-[1240px] px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full text-sm font-semibold transition-all duration-200
+      disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .btn-primary {
+    @apply btn bg-forest px-6 py-3.5 text-white shadow-card hover:bg-forest-800 hover:shadow-lift active:scale-[.985];
+  }
+  .btn-emerald {
+    @apply btn bg-emerald px-6 py-3.5 text-white shadow-card hover:bg-emerald-600 active:scale-[.985];
+  }
+  .btn-ghost {
+    @apply btn border border-line bg-white px-6 py-3.5 text-forest hover:border-forest/25 hover:bg-mint-50;
+  }
+  .btn-light {
+    @apply btn bg-white px-6 py-3.5 text-forest shadow-card hover:bg-mint-100 active:scale-[.985];
+  }
+  .btn-sm {
+    @apply rounded-full px-4 py-2 text-[13px];
+  }
+
+  .card {
+    @apply rounded-3xl border border-line/80 bg-white shadow-card;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1.5 text-xs font-medium text-forest;
+  }
+
+  .label {
+    @apply mb-1.5 block text-[13px] font-semibold text-ink;
+  }
+  .field {
+    @apply w-full rounded-2xl border border-line bg-white px-4 py-3 text-sm text-ink placeholder:text-ink/35
+      transition-colors focus:border-emerald focus:outline-none focus:ring-4 focus:ring-emerald/10;
+  }
+  .field-error {
+    @apply border-red-300 ring-red-100;
+  }
+  .hint {
+    @apply mt-1.5 text-xs text-ink/50;
+  }
+
+  .section {
+    @apply py-12 sm:py-16 lg:py-20;
+  }
+  .eyebrow {
+    @apply text-[11px] font-bold uppercase tracking-[0.18em] text-emerald;
+  }
+
+  .soft-grid {
+    background-image: radial-gradient(circle at 1px 1px, rgba(6, 78, 59, 0.12) 1px, transparent 0);
+    background-size: 22px 22px;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Radio-based swatches (work without JavaScript) */
+  .swatch-input:checked + .swatch {
+    @apply ring-2 ring-forest ring-offset-2;
+  }
+  .size-input:checked + .size-pill {
+    @apply bg-forest text-white border-forest shadow-card;
+  }
+  .size-input:disabled + .size-pill {
+    @apply cursor-not-allowed border-line bg-mist text-ink/25 line-through;
+  }
+  .img-input:checked + .thumb {
+    @apply ring-2 ring-forest ring-offset-2;
+  }
+}
+
+/* Reveal on load */
+.reveal {
+  animation: fade-up 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .animate-float {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
