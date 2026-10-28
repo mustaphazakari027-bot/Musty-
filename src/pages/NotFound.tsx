@@ -1,0 +1,3 @@
+import {Link} from 'react-router-dom';
+import {PageHead} from '../components/ui';
+export default function NotFound(){return <><PageHead title="Page not found"/><div className="container-x flex flex-col items-center py-20 text-center"><p className="serif text-[64px] leading-none text-[#c8ddc5]">404</p><h1 className="mt-2 text-[22px] font-extrabold text-[#173f30]">This aisle doesn’t exist</h1><p className="mt-2 max-w-sm text-[12.5px] leading-relaxed text-[#7b8b7d]">The page may have moved, or the link may be incorrect. Let’s get you back to the fresh stuff.</p><div className="mt-6 flex flex-wrap justify-center gap-2"><Link to="/" className="btn-primary">Back home</Link><Link to="/shop" className="btn-secondary">Shop groceries</Link></div></div></>;}

@@ -1,0 +1,4 @@
+import {Link} from 'react-router-dom';
+import {BRAND} from '../brand';
+export function LeafMark({size=34}:{size?:number}) {return <svg width={size} height={size} viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="20" fill="#126448"/><path d="M18 37c2-14 12-20 29-20 0 17-7 28-20 28-7 0-10-4-9-8Z" fill="#e9f6e9"/><path d="M17 49c7-11 14-16 24-22" fill="none" stroke="#126448" strokeWidth="3" strokeLinecap="round"/></svg>;}
+export default function Logo({compact=false}:{compact?:boolean}) {return <Link to="/" className="flex items-center gap-2.5 shrink-0" aria-label={`${BRAND.name} home`}><LeafMark/><span className="leading-none"><span className={`block font-extrabold tracking-tight text-[#133d2d] ${compact?'text-[17px]':'text-[20px]'}`}>{BRAND.name}</span><span className="mt-1 block text-[9.5px] font-bold uppercase tracking-[.17em] text-[#6b8476]">{BRAND.tagline}</span></span></Link>;}
